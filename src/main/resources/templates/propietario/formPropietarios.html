@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" th:href="@{/favicon.ico}">
+
+<title>LasPircasApp | Creación de Informacion del
+	Propietario/Inquilino</title>
+<!-- Bootstrap core CSS -->
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}"
+	rel="stylesheet">
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+	rel="stylesheet">
+</head>
+
+<body>
+
+	<header th:insert="fragments/menu :: menu-principal" >
+	
+	</header>
+
+	<main role="main">
+		<hr>
+		<div class="container">
+
+			<div class="card">
+				<h4 class="card-header">
+					<strong>Datos de los propietarios/inquilinos</strong>
+				</h4>
+				<div class="card-body">
+					<form th:action="@{/propietarios/save}" method="post" th:object=${propietario}>
+					<div th:if="${#fields.hasErrors('*')}" class='alert alert-danger'
+							role='alert'>
+							Por favor corrija los siguientes errores:
+							<ul>
+								<li th:each="err : ${#fields.errors('*')}" th:text="${err}">
+							</ul>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="nombre">Nombre</label> 
+									<input type="text"	class="form-control" th:field="*{nombre}" id="nombre" name="nombre"	placeholder="Nombre del Propietario/Inquilino" required="required">
+									<input type="hidden" th:field="*{id}">
+								</div>
+							</div>
+							<div class="col-md-9">
+								<div class="form-group">
+									<label for="apellido">Apellido</label> 
+									<input type="text"	class="form-control" th:field="*{apellido}" id="apellido" name="apellido"	placeholder="Apellido del Propietario/Inquilino" required="required">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="nombre">Documento</label> 
+									<input type="text"	class="form-control" th:field="*{documento}" id="documento" name="documento" placeholder="Documento del Propietario/Inquilino"	required="required">
+								</div>
+							</div>
+							<div class="col-md-9">
+								<div class="form-group">
+									<label for="apellido">Telefono</label> 
+									<input type="number" class="form-control" th:field="*{telefono}" id="telefono" name="telefono"	placeholder="Telfono del Propietario/Inquilino"	required="required">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="categoria">Lote</label> 
+									<select class="form-control" th:field="*{lote}" name="lote" id="lote">
+										<option value="A">A</option>
+										<option value="B">B</option>
+										<option value="C">C</option>
+										<option value="D">D</option>
+										<option value="E">E</option>
+										<option value="F">F</option>
+										<option value="G">G</option>
+									</select>
+								</div>
+							
+						</div>	
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="numero">Casa</label> 
+									<select	class="form-control" th:field="*{numero}" name="numero" id="numero">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
+										<option value="21">21</option>
+										<option value="22">22</option>
+										<option value="23">23</option>
+									</select>
+								</div>
+							</div>
+						
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="vehiculo">Vehiculo</label> 
+									<input type="text"	class="form-control" th:field="*{vehiculo}" id="vehiculo" name="vehiculo"	placeholder="Vehiculo del Propietario/Inquilino" required="required">
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="dominio">Dominio/Patente</label> 
+									<input type="text"	class="form-control" th:field="*{dominio}" id="dominio" name="dominio" placeholder="Dominio del vehiculo del Propietario/Inquilino" required="required">
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="categoria">Categoria</label>
+									 <select class="form-control" th:field="*{categoria}" name="categoria" id="categoria">
+										<option value="propietario">Propietario</option>
+										<option value="inquilino">Inquilino</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="categoria">Estatus</label>
+									 <select class="form-control" th:field="*{estatus}" name="estatus" id="estatus">
+										<option value="habitada">Habitada</option>
+										<option value="obra">Obra</option>
+										<option value="terreno">Lote Vacio</option>
+									</select>
+								</div>
+							</div>
+							 
+						<div class="col-md-3">
+								<div class="form-group">
+									<label for="email">Email</label> 
+									<input type="text" class="form-control" th:field="*{email}" id="email" name="email" placeholder="Email del Propietario/Inquilino" required="required">
+								</div>
+							</div>
+						<button type="submit" class="btn btn-primary">Guardar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- /container -->
+
+	</main>
+
+	<footer class="footer" th:insert="fragments/footer :: pie-pagina">
+	
+	</footer>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+	<script src="tinymce/tinymce.min.js"></script>
+	<script>
+		$(function() {
+			$("#fecha").datepicker({
+				dateFormat : 'dd-mm-yy'
+			});
+		});
+
+		/*
+		tinymce.init({
+		    selector: '#detalles',
+		    plugins: "textcolor, table lists code",
+		    toolbar: " undo redo | bold italic | alignleft aligncenter alignright alignjustify \n\
+		              | bullist numlist outdent indent | forecolor backcolor table code"
+		});
+		
+		 */
+	</script>
+</body>
+</html>
