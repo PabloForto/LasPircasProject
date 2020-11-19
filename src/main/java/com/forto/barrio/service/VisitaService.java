@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.forto.barrio.model.Visita;
 import com.forto.barrio.repository.VisitaRepository;
 
@@ -76,7 +77,17 @@ public class VisitaService implements IVisitaService {
 		return visitaRepo.findByDominio(dominioVisita);
 
 	}
+	
+	public List<Visita> listarDisponibles(){
+		return visitaRepo.findByRegistrosIsNullOrRegistrosEgresoIsNotNullAndRegistrosIngresoIsNotNull();
+	}
+	
 
+	/*
+	 * Metodo para eliminar por idVisita.
+	 * @Param idVisita
+	 * 
+	 */
 	public void eliminar(Integer idVisita) {
 		visitaRepo.deleteById(idVisita);
 

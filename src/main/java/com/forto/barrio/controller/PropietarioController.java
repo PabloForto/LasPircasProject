@@ -1,6 +1,5 @@
 package com.forto.barrio.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.forto.barrio.model.Propietario;
+import com.forto.barrio.model.Registro;
 import com.forto.barrio.service.IPropietarioService;
 import com.forto.barrio.service.IRegistroService;
 
@@ -25,13 +25,15 @@ public class PropietarioController {
 	@Autowired
 	private IPropietarioService servicePropietario;
 	
-	@Autowired
-	private IRegistroService serviceRegistro;
+	@Autowired														
+    private IRegistroService serviceRegistro;
 
 	@GetMapping("/index")
 	public String mostrarIndex(Model model) {
 		List<Propietario> lista = servicePropietario.buscarTodos();
+		List<Registro> lista2 = serviceRegistro.buscarTodas();
 		model.addAttribute("propietarios", lista);
+		model.addAttribute("registros", lista2);
 		return "propietario/listPropietarios";
 	}
 
@@ -57,12 +59,14 @@ public class PropietarioController {
 	}
 
 	/*
-	 * !!!Modificar por que no esta eliminando ya que tambien tiene que eliminar el registro!!!!
+	 * !!!Modificar por que no esta eliminando  ¿tambien tiene que eliminar el registro?!!!!
 	 */
 	@GetMapping("/delete/{id}")
-	public String eliminar(@PathVariable("id") Integer idPropietario, Model model, RedirectAttributes attributes) {
+	public String eliminar(@PathVariable("id") Integer idPropietario, @PathVariable("idRegistro") Integer idRegistro, Model model, RedirectAttributes attributes) {
 		//System.out.println("Borrando propietario con id: " + idPropietario);
-		//serviceRegistro.eliminarRegistro(idRegistro);
+		
+		serviceRegistro.eliminarRegistro(idRegistro);
+		
 		servicePropietario.eliminar(idPropietario);
 		attributes.addFlashAttribute("msg", "Propietario eliminado!");
 		return "redirect:/propietarios/index";
