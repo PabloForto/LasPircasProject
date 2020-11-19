@@ -21,6 +21,7 @@ public interface VisitaRepository extends JpaRepository<Visita, Integer> {
 	List<Visita> findByNombreAndApellidoOrderByIdAsc(String nombre, String apellido);
 	List<Visita> findByVehiculoAndDominioOrderByIdAsc(String vehiculo, String dominio);
 	List<Visita> findByNombreAndApellidoAndLoteAndNumeroOrderByLoteAsc(String nombre, String apellido, String lote, int numero);
-    List<Visita> findByRegistrosIsNullOrRegistrosEgresoIsNotNullAndRegistrosIngresoIsNotNull();
+	//Sentencia para buscar por registro si no tiene registro tanto de egreso como ingreso.	
+	List<Visita>findByRegistrosIsNullOrRegistrosEgresoIsNotNullAndRegistrosIngresoIsNotNull();
 	
 }

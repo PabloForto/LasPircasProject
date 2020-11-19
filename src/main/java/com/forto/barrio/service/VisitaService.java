@@ -79,7 +79,7 @@ public class VisitaService implements IVisitaService {
 	}
 	
 	public List<Visita> listarDisponibles(){
-		return visitaRepo.findByRegistrosIsNullOrRegistrosEgresoIsNotNullAndRegistrosIngresoIsNotNull();
+		 return visitaRepo.findByRegistrosIsNullOrRegistrosEgresoIsNotNullAndRegistrosIngresoIsNotNull();
 	}
 	
 

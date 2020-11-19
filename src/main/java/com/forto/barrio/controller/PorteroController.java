@@ -19,6 +19,7 @@ import com.forto.barrio.model.Propietario;
 import com.forto.barrio.model.Registro;
 import com.forto.barrio.service.IRegistroService;
 import com.forto.barrio.service.PropietarioService;
+import com.forto.barrio.service.VisitaService;
 
 
 @Controller
@@ -28,15 +29,15 @@ public class PorteroController {
 	@Autowired
 	private PropietarioService propietarioService; 
 	
-	//@Autowired
-	//private IVisitaService serviceVisita;
+	@Autowired
+	private VisitaService serviceVisita;
 	
 	@Autowired
 	private IRegistroService serviceRegistro;
 	
 	
 	@GetMapping("/index")
-	public String mostrarMovimientosPorteria( Model model) {
+	public String mostrarIngresosEgresosDePropietarios( Model model) {
 		model.addAttribute("registros", new Registro());
 		model.addAttribute("propietarios",propietarioService.listarDisponibles());
 		model.addAttribute("registros", serviceRegistro.listarhoy());
@@ -60,4 +61,13 @@ public class PorteroController {
 	  return "redirect:/porteros/index";
 	}
 	
+	
+	
+	@GetMapping("/indexVisita")
+	public String mostrarIngresosEgresosDeVisitas(Model model) {
+		model.addAttribute("registros", new Registro());
+		model.addAttribute("visitas",serviceVisita.listarDisponibles());
+		model.addAttribute("registros", serviceRegistro.listarhoy());
+		return"portero/listIngresosEgresosVisita";
+	}
 }
