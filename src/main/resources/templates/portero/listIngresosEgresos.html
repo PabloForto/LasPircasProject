@@ -44,7 +44,6 @@
 							<option th:each="p : ${propietarios}"
 								th:text="${p.nombre} + ' ' + ${p.apellido} + '  Dominio: ' + ${p.dominio} + ' ' + ${p.lote} + ' ' + ${p.numero}"
 								th:value="${p.id}">
-								
 						</select>
 		
 						<div th:if="${msg != null}" class='alert alert-success'
@@ -68,7 +67,7 @@
 								<th scope="col">Estatus</th>
 								<th scope="col">Egreso</th>
 								<th scope="col">Ingreso</th>
-
+                                <th scope="col">pulsar</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -87,10 +86,10 @@
 								
 								  <!--<td th:unless="${r.ingreso != null}" th:text="${'asd'}"></td>-->
 								<td>
-								<a
+								<a 
 									th:href="@{/porteros/generarIngreso/{id} (id=${r.id}) }"
 									onclick="return confirm('¿Estas seguro?')"
-									class="btn btn-success btn-sm" role="button" title="Eliminar"><i
+									class="btn btn-primary" role="button" title="Eliminar"><i
 										class="fas fa-close" aria-hidden="true"></i></a>
 
 
@@ -104,7 +103,8 @@
 								<!-- <td th:text="${r.ingreso} ? '-'"></td> -->
 
 
-							</tr>
+							
+							
 						</tbody>
 					</table>
 

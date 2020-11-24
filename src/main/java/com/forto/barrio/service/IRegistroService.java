@@ -16,6 +16,7 @@ public interface IRegistroService {
 	Registro generarRegistroConEgreso(Propietario propietario);
 	Registro generarIngreso(Integer idRegistro);
 	List<Registro> listarhoy();
+	List<Registro> listarHoy();
 	Registro generarRegistroconIgreso(Visita visita);
 	Registro generarEgreso(Integer idRegistro);
 	void eliminarRegistro(Integer idRegistro);

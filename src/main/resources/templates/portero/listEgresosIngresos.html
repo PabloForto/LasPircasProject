@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -38,13 +39,12 @@
 					</h4>
 					<div class="col-md-12 col-sm-12">
 
-						<select id="selectVisitas" class="form-control">
+						<select id="selectPropietarios" class="form-control">
 						
 							<option th:text="${'Egresar'}" th:value="${''}">
-							<option th:each="v : ${visitas}"
-								th:text="${v.nombre} + ' ' + ${v.apellido} + ' ' + ${v.documento} + ' '  + '  Dominio: ' + ${v.dominio} + ' ' + ${v.lote} + ' ' + ${v.numero}"
-								th:value="${v.id}">
-								
+							<option th:each="p : ${visitas}"
+								th:text="${p.nombre} + ' ' + ${p.apellido} + '  Dominio: ' + ${p.dominio} + ' ' + ${p.lote} + ' ' + ${p.numero}"
+								th:value="${p.id}">
 						</select>
 		
 						<div th:if="${msg != null}" class='alert alert-success'
@@ -68,7 +68,7 @@
 								<th scope="col">Estatus</th>
 								<th scope="col">Egreso</th>
 								<th scope="col">Ingreso</th>
-
+                                <th scope="col">pulsar</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -76,7 +76,6 @@
 								<td th:text="${r.visita.id}"></td>
 								<td th:text="${r.visita.nombre}"></td>
 								<td th:text="${r.visita.apellido}"></td>
-								<td th:text="${r.visita.documento}"></td>
 								<td th:text="${r.visita.vehiculo}"></td>
 								<td th:text="${r.visita.dominio}"></td>
 								<td th:text="${r.visita.lote}"></td>
@@ -86,16 +85,11 @@
 								<td th:text="${r.egreso}"></td>
 								<td th:text="${r.ingreso}"></td>
 								
-								  <!--<td th:unless="${r.ingreso != null}" th:text="${'asd'}"></td>-->
-								<td>
-								<a
-									th:href="@{/porteros/generarIngreso/{id} (id=${r.id}) }"
+<!-- 								  <td th:unless="${r.ingreso != null}" th:text="${'asd'}"></td> -->
+								<td><a th:href="@{/porteros/generarEngreso/{id} (id=${r.id}) }"
 									onclick="return confirm('¿Estas seguro?')"
-									class="btn btn-success btn-sm" role="button" title="Eliminar"><i
-										class="fas fa-close" aria-hidden="true"></i></a>
-
-
-								</td>
+									class="btn btn-primary" role="button" title="Eliminar"><i
+										class="fas fa-close" aria-hidden="true"></i></a></td>
 								
 
 								
@@ -105,7 +99,8 @@
 								<!-- <td th:text="${r.ingreso} ? '-'"></td> -->
 
 
-							</tr>
+							
+							
 						</tbody>
 					</table>
 
@@ -130,14 +125,14 @@
 	<script th:src="@{/js/select2.min.js}"></script>
 
 	<script>
-		$("#selectVisitas").select2();
+		$("#selectPropietarios").select2();
 
-		$("#selectVisitas")
+		$("#selectPropietarios")
 				.change(
 						function() {
 							console.log("asd")
 							window.location.href = "/porteros/generarIngreso?idVisita="	
-								+ $("#selectVisitas").val();
+								+ $("#selectPropietarios").val();
 						});
 	</script>
 	

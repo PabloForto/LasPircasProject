@@ -92,6 +92,26 @@ public class RegistroService implements IRegistroService {
 		
 	}
 
+	@Override
+	public List<Registro> listarHoy() {
+		
+		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+		String hoySinHora = f.format(new Date());
+		
+		SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		Date date = new Date();
+    	Date date2 = new Date();
+		try {
+			;
+			date = formater.parse(hoySinHora.concat(" 00:00"));
+			date2 = formater.parse(hoySinHora.concat(" 24:00"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return registroRepo.findByIngresoBetween(date, date2);
+		
+	}
+
 }
 
 	

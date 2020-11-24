@@ -18,4 +18,5 @@ public interface RegistroRepository extends JpaRepository<Registro,Integer>{
 	 */
 	List<Registro> findByRegistro(Date registro);
 	List<Registro> findByEgresoBetween(Date first, Date second);
+	List<Registro> findByIngresoBetween(Date first, Date second);
 }
