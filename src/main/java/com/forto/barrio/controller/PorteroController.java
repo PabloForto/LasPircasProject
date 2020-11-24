@@ -83,7 +83,7 @@ public class PorteroController {
 		return"redirect:/porteros/index2";
 	}
 	
-	@GetMapping("/generarEngreso/{id}")
+	@GetMapping("/generarEgreso/{id}")
 	public String generarEngreso(@PathVariable("id") Integer idRegistro, Model model, RedirectAttributes attributes) {
 	   serviceRegistro.generarEgreso(idRegistro);
 	  attributes.addFlashAttribute("msg","Engreso guardado!");
