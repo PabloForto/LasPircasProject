@@ -2,54 +2,42 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" th:href="@{/favicon.ico}">
 
-<title>LasPircasApp | Porteria:Ingresos/Egresos</title>
+<title>LasPircasApp | Porteria:Ingresos/Egresos Propietarios</title>
 <!-- Bootstrap core CSS -->
 <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
-<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}"
-	rel="stylesheet">
-<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-	rel="stylesheet">
+<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
 <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
 <link rel="stylesheet" th:href="@{/css/select2.min.css}">
 
 </head>
-
 <body>
-
 	<header th:insert="fragments/menu :: menu-principal"> </header>
-
 	<main role="main">
 		<hr>
 		<div class="container">
-
-
 			<div class="card">
 				<div class="card-header">
 					<h4>
-						<strong>Listado Egresos</strong>
+						<strong>Listado Egresos/Ingresos Propietarios</strong>
 					</h4>
 					<div class="col-md-12 col-sm-12">
-
 						<select id="selectPropietarios" class="form-control">
-						
-							<option th:text="${'Egresar'}" th:value="${''}">
+   	 						<option th:text="${'Egresar'}" th:value="${''}">
 							<option th:each="p : ${propietarios}"
-								th:text="${p.nombre} + ' ' + ${p.apellido} + '  Dominio: ' + ${p.dominio} + ' ' + ${p.lote} + ' ' + ${p.numero}"
-								th:value="${p.id}">
+								    th:text="${p.nombre} + ' ' + ${p.apellido} + '  Dominio: ' + ${p.dominio} + ' ' + ${p.lote} + ' ' + ${p.numero}"
+								    th:value="${p.id}">
 						</select>
-		
 						<div th:if="${msg != null}" class='alert alert-success'
-							th:text="${msg}" role='alert'>
+							 th:text="${msg}" role='alert'>
 						</div>
-
 					</div>
 				</div>
 				<div class="card-body">
@@ -83,40 +71,21 @@
 								<td th:text="${r.propietario.estatus}"></td>
 								<td th:text="${r.egreso}"></td>
 								<td th:text="${r.ingreso}"></td>
-								
-								  <!--<td th:unless="${r.ingreso != null}" th:text="${'asd'}"></td>-->
 								<td>
-								<a 
-									th:href="@{/porteros/generarIngreso/{id} (id=${r.id}) }"
-									onclick="return confirm('¿Estas seguro?')"
-									class="btn btn-primary" role="button" title="Eliminar"><i
-										class="fas fa-close" aria-hidden="true"></i></a>
-
-
+									<a th:href="@{/porteros/generarIngreso/{id} (id=${r.id}) }"
+									   class="btn btn-success btn-sm" role="button" title="Editar"><i
+									   class="fas fa-user-edit" aria-hidden="true"></i>
+									</a>
 								</td>
-								
-
-								
-									
-								
-								<!-- <td th:if="${r.ingreso != null}" th:text="${r.ingreso}"></td> -->
-								<!-- <td th:text="${r.ingreso} ? '-'"></td> -->
-
-
-							
-							
 						</tbody>
 					</table>
-
 				</div>
 			</div>
 		</div>
 		<!-- /container -->
 
 	</main>
-
 	<footer class="footer" th:insert="fragments/footer :: pie-pagina">
-
 	</footer>
 
 	<!-- Bootstrap core JavaScript
@@ -139,19 +108,5 @@
 								+ $("#selectPropietarios").val();
 						});
 	</script>
-	
-	<script>
-	$("#selectPropietarios2").select2();
-
-	$("#selectPropietarios2")
-			.change(
-					function() {
-						console.log("asd")
-						window.location.href = "/porteros/generarIngreso?idRegistro="	
-								+ $("#selectPropietarios2").val();
-					});
-	
-	</script>
-
 </body>
 </html>

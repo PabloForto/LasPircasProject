@@ -62,10 +62,10 @@ public class PropietarioController {
 	 * !!!Modificar por que no esta eliminando  ¿tambien tiene que eliminar el registro?!!!!
 	 */
 	@GetMapping("/delete/{id}")
-	public String eliminar(@PathVariable("id") Integer idPropietario, @PathVariable("idRegistro") Integer idRegistro, Model model, RedirectAttributes attributes) {
+	public String eliminar(@PathVariable("id") Integer idPropietario, Model model, RedirectAttributes attributes) {
 		//System.out.println("Borrando propietario con id: " + idPropietario);
 		
-		serviceRegistro.eliminarRegistro(idRegistro);
+		serviceRegistro.eliminarRegistro(idPropietario);
 		
 		servicePropietario.eliminar(idPropietario);
 		attributes.addFlashAttribute("msg", "Propietario eliminado!");

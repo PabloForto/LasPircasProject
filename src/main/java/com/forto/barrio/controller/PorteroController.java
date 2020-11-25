@@ -1,9 +1,10 @@
 /*
  * Controlador encargado de realizar los trabajos de los registros tanto de ingreso/egresos
- * de propietarios,visitas,fletes,etc...
+ * de propietarios,visitas.
  */
 
 package com.forto.barrio.controller;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,6 @@ import com.forto.barrio.service.IRegistroService;
 import com.forto.barrio.service.PropietarioService;
 import com.forto.barrio.service.VisitaService;
 
-
 @Controller
 @RequestMapping("/porteros")
 public class PorteroController {
@@ -36,6 +36,9 @@ public class PorteroController {
 	@Autowired
 	private IRegistroService serviceRegistro;
 	
+	/*
+	 * Metodos Propietarios.
+	 */
 	
 	@GetMapping("/index")
 	public String mostrarIngresosEgresosDePropietarios( Model model) {
@@ -63,8 +66,8 @@ public class PorteroController {
 	}
 	
 	
-    /*
- 	 * 	No esta apuntando al objeto visita!!!
+	/*
+	 * Metodos Visita.
 	 */
 	@GetMapping("/index2")
 	public String mostrarIngresosEgresosDeVisitas(Model model) {
