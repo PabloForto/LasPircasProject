@@ -18,8 +18,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.forto.barrio.model.Propietario;
 import com.forto.barrio.model.Registro;
+import com.forto.barrio.model.RegistroV;
 import com.forto.barrio.model.Visita;
 import com.forto.barrio.service.IRegistroService;
+import com.forto.barrio.service.IRegistroVService;
 import com.forto.barrio.service.PropietarioService;
 import com.forto.barrio.service.VisitaService;
 
@@ -35,9 +37,19 @@ public class PorteroController {
 	
 	@Autowired
 	private IRegistroService serviceRegistro;
+	@Autowired
+	private IRegistroVService serviceRegistroV;
+	
+	
+	@GetMapping("/loginPorteria")
+	public String loginPortero() {
+		return"portero/loginPortero";
+	}
+	
+	
 	
 	/*
-	 * Metodos Propietarios.
+	 * Metodos encargado de devolver la vista de registros de egresos/ingresos de los Propietarios.
 	 */
 	
 	@GetMapping("/index")
@@ -71,9 +83,9 @@ public class PorteroController {
 	 */
 	@GetMapping("/index2")
 	public String mostrarIngresosEgresosDeVisitas(Model model) {
-		model.addAttribute("registros", new Registro());
+		model.addAttribute("registros", new RegistroV());
 		model.addAttribute("visitas", visitaService.listarDisponibles());
-		model.addAttribute("registros", serviceRegistro.listarHoy());
+		model.addAttribute("registros", serviceRegistroV.listarhoy());
 		return"portero/listEgresosIngresos";
 	}
 	
@@ -81,14 +93,14 @@ public class PorteroController {
 	@GetMapping("/generarIngreso")
 	public String generarIngresos(@RequestParam("idVisita") Integer idVisita, Model model, RedirectAttributes attributes) {
 		Visita v = visitaService.buscarPorId(idVisita);
-		model.addAttribute("registros", serviceRegistro.generarRegistroconIgreso(v));
+		model.addAttribute("registros", serviceRegistroV.generarRegistroconIgreso(v));
 		attributes.addFlashAttribute("msg","Ingreso guardado!");
 		return"redirect:/porteros/index2";
 	}
 	
 	@GetMapping("/generarEgreso/{id}")
 	public String generarEngreso(@PathVariable("id") Integer idRegistro, Model model, RedirectAttributes attributes) {
-	   serviceRegistro.generarEgreso(idRegistro);
+	   serviceRegistroV.generarEgreso(idRegistro);
 	  attributes.addFlashAttribute("msg","Engreso guardado!");
 	  return "redirect:/porteros/index2";
 	}

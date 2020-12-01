@@ -1,4 +1,3 @@
-
 package com.forto.barrio.model;
 
 import java.util.Date;
@@ -12,12 +11,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /*
- * Entidad Registro con cardinalidad de muchos a uno con entidad Propietario.
+ * Entidad Registro con cardinalidad de Muchos a uno con entidad Visita.
  */
 
 @Entity
-public class Registro {
-
+public class RegistroV {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -31,11 +30,10 @@ public class Registro {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ingreso;
 
-	
 	@ManyToOne
-	private Propietario propietario;
+	private Visita visita;
 	
-
+	
 	/**
 	 * @return the id
 	 */
@@ -93,26 +91,26 @@ public class Registro {
 	}
 	
 	/**
-	 * @return the propietario
+	 * @return the visita
 	 */
-	public Propietario getPropietario() {
-		return propietario;
+	public Visita getVisita() {
+		return visita;
 	}
 	
 	/**
-	 * @param propietario the propietario to set
+	 * @param visita the visita to set
 	 */
-	public void setPropietario(Propietario propietario) {
-		this.propietario = propietario;
+	public void setVisita(Visita visita) {
+		this.visita = visita;
 	}
 
 	@Override
 	public String toString() {
-		return "Registro [id=" + id + ", registro=" + registro + ", egreso=" + egreso + ", ingreso=" + ingreso
-				+ ", propietario=" + propietario + "]";
+		return "RegistroV [id=" + id + ", registro=" + registro + ", egreso=" + egreso + ", ingreso=" + ingreso
+				+ ", visita=" + visita + "]";
 	}
+
 	
 	
-	
-	
+
 }

@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+/*
+ * Entidad Visita con cardinalida uno a muchos con entidad RegistrosV 
+ */
 
 @Entity
 public class Visita {
@@ -16,21 +19,30 @@ public class Visita {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String nombre;
-    private String apellido;
-    private Integer documento;
-    private String vehiculo;
-    private String dominio;
-    private String lote;
-    private Integer numero;
-    // categoria = visita o flete
+    
+	private String apellido;
+    
+	private Integer documento;
+    
+	private String vehiculo;
+    
+	private String dominio;
+    
+	private String lote;
+    
+	private Integer numero;
+    
+	// categoria = visita o flete
     private String categoria;
-    // estatus(1=particular,2=materiales,3=encomienda)
+    
+	// estatus(1=particular,2=materiales,3=encomienda)
     private String estatus;
 	
    
     @OneToMany
-    private List<Registro> registros;
+    private List<RegistroV> registros;
 	
        
     /**
@@ -173,15 +185,26 @@ public class Visita {
 		this.estatus = estatus;
 	}
 	
-	public List<Registro> getResgistros() {
+	/**
+	 * @return the registros
+	 */
+	public List<RegistroV> getRegistros() {
 		return registros;
 	}
 	
-	public void setResgistros(List<Registro> resgistros) {
-		this.registros = resgistros;
+	/**
+	 * @param registros the registros to set
+	 */
+	public void setRegistros(List<RegistroV> registros) {
+		this.registros = registros;
 	}
 
 	
-   
-    
+	@Override
+	public String toString() {
+		return "Visita [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", documento=" + documento
+				+ ", vehiculo=" + vehiculo + ", dominio=" + dominio + ", lote=" + lote + ", numero=" + numero
+				+ ", categoria=" + categoria + ", estatus=" + estatus + ", registros=" + registros + "]";
+	}
+	
 }

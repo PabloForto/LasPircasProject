@@ -44,8 +44,6 @@
                   <label for="password" class="sr-only">Password</label>
                   <input type="password" name="password" id="password" class="form-control" placeholder="Password" required><br>
                   <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-                   <p class="text-primary" style="font-size: small">¿Todavía no estas registrado? <a class="nav-link"
-				th:href="@{/administrador/create}">Registrate</a></p>
                 </div>
                 <div class="col-md-4"> 
                 </div>
@@ -56,6 +54,10 @@
       </div> <!-- /container -->
 
     </main>
+    
+    <footer th:insert="fragments/footer :: pie-pagina" class="footer">
+
+	</footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

@@ -10,6 +10,12 @@ import org.springframework.stereotype.Service;
 import com.forto.barrio.model.Propietario;
 import com.forto.barrio.repository.PropietarioRepository;
 
+/*
+ * Clase de servicio que implementa los metodos para la entidad Propietario.
+ * se conecta con el repositorio del Propietario para poder dsarrollar la logica de servicio 
+ * del sistema.
+ */
+
 @Service
 public class PropietarioService implements IPropietarioService {
 
@@ -45,25 +51,24 @@ public class PropietarioService implements IPropietarioService {
 
 	public List<Propietario> buscarPorApellido(String apellidoPropietario) {
 		return propietarioRepo.findByApellido(apellidoPropietario);
-		
+
 	}
 
 	public List<Propietario> buscarPorDominio(String dominioPropietario) {
 		return propietarioRepo.findByDominio(dominioPropietario);
-		
+
 	}
 
 	public List<Propietario> buscarPorLotePorNumeroPorNombrePorApellido(String lotePropietario, int numeroPropietario,
 			String nombrePropietario, String apellidoPropietario) {
 
-		return propietarioRepo.findByLoteAndNumeroAndNombreAndApellidoOrderByLoteAsc(
-				lotePropietario, numeroPropietario, nombrePropietario, apellidoPropietario);
+		return propietarioRepo.findByLoteAndNumeroAndNombreAndApellidoOrderByLoteAsc(lotePropietario, numeroPropietario,
+				nombrePropietario, apellidoPropietario);
 
 	}
 
 	public List<Propietario> buscarPorNombrePorApellido(String nombrePropietario, String apellidoPropietario) {
-		return propietarioRepo.findByNombreAndApellidoOrderByIdAsc(nombrePropietario,
-				apellidoPropietario);
+		return propietarioRepo.findByNombreAndApellidoOrderByIdAsc(nombrePropietario, apellidoPropietario);
 	}
 
 	public void eliminar(Integer idPropietario) {
@@ -71,11 +76,8 @@ public class PropietarioService implements IPropietarioService {
 
 	}
 
-	
-	public List<Propietario> listarDisponibles(){
+	public List<Propietario> listarDisponibles() {
 		return propietarioRepo.findByRegistrosIsNullOrRegistrosEgresoIsNotNullAndRegistrosIngresoIsNotNull();
 	}
-
-	
 
 }

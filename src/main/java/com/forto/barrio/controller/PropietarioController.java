@@ -64,9 +64,6 @@ public class PropietarioController {
 	@GetMapping("/delete/{id}")
 	public String eliminar(@PathVariable("id") Integer idPropietario, Model model, RedirectAttributes attributes) {
 		//System.out.println("Borrando propietario con id: " + idPropietario);
-		
-		serviceRegistro.eliminarRegistro(idPropietario);
-		
 		servicePropietario.eliminar(idPropietario);
 		attributes.addFlashAttribute("msg", "Propietario eliminado!");
 		return "redirect:/propietarios/index";

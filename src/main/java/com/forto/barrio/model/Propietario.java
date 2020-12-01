@@ -7,24 +7,40 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
+/*
+ * Entidad Propietario con cardinalidad de uno a muchos a entidad Registro.
+ */
+
 @Entity
 public class Propietario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String lote;
+	
 	private Integer numero;
+	
 	private String nombre;
+	
 	private String apellido;
+	
 	private Integer documento;
+	
 	private String telefono;
+	
 	private String email;
 	// categoria = propietario o inquilino.
 	private String categoria;
+	
 	private String vehiculo;
+	
 	private String dominio;
+	
 	private String estatus;
+	
 	
 	@OneToMany
 	private List<Registro> registros;
@@ -206,6 +222,7 @@ public class Propietario {
 	public void setRegistros(List<Registro> registros) {
 		this.registros = registros;
 	}
+	
 	
 	@Override
 	public String toString() {

@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.forto.barrio.model.Visita;
 
+/*
+ * Interface que implementa los metodos para el servicio de Visitas.
+ */
+
 public interface IVisitaService {
 	void guardar(Visita visita);
 	List<Visita> buscarTodos();
