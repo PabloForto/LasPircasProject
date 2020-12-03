@@ -17,5 +17,7 @@ public interface IUsuarioService {
 	void eliminar(Integer idUsuario);
 
 	void cargar(Integer idUsuario);
+	
+	Usuario buscarPorUsername(String username);
 
 }

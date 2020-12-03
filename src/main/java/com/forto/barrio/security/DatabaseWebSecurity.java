@@ -2,11 +2,14 @@ package com.forto.barrio.security;
 
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -38,10 +41,9 @@ public class DatabaseWebSecurity extends WebSecurityConfigurerAdapter {
 		"/js/**").permitAll()
 	// Las vistas públicas no requieren autenticación
 		.antMatchers("/",
-		"/administrador/loginAdmin",
-		"/porteros/loginPorteria").permitAll()
+		"/bcrypt/**").permitAll()
 	// Asignar permisos a URLs por ROLES
-		.antMatchers("/home").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
+//		.antMatchers("/home").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
 		.antMatchers("/propietarios/view/{id}").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
 		.antMatchers("/propietarios/delete/{id}").hasAnyAuthority("ADMINISTRADOR")
 		.antMatchers("/propietarios/edit/{id}").hasAnyAuthority("ADMINISTRADOR")
@@ -54,8 +56,14 @@ public class DatabaseWebSecurity extends WebSecurityConfigurerAdapter {
 	// Todas las demás URLs de la Aplicación requieren autenticación
 		.anyRequest().authenticated()
 	// El formulario de Login no requiere autenticacion
-		.and().formLogin().permitAll();
+		.and().formLogin().loginPage("/login").permitAll();
 	}
+	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+	return new BCryptPasswordEncoder();
+	}
+
 
 	
 }

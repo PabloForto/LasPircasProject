@@ -37,4 +37,11 @@ public class UsuarioService implements IUsuarioService {
 		
 	}
 
+	@Override
+	public Usuario buscarPorUsername(String username) {
+		return usuarioRepo.findByUsername(username);
+	}
+	
+	
+
 }

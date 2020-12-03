@@ -40,7 +40,7 @@ public class PorteroController {
 	private IRegistroVService serviceRegistroV;
 	
 	
-	@GetMapping("/loginPorteria")
+	@GetMapping("/loginP")
 	public String loginPortero() {
 		return"portero/loginPortero";
 	}

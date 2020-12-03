@@ -12,7 +12,7 @@ import com.forto.barrio.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
-	List<Usuario> findByUsername(String username);
+	Usuario findByUsername(String username);
 
 	List<Usuario> findByNombre(String nombre);
 
