@@ -63,14 +63,21 @@
 								<td th:text="${propietario.numero}"></td>
 								<td th:text="${propietario.categoria}"></td>
 								<td th:text="${propietario.estatus}"></td>
-								<td><a
-									th:href="@{/propietarios/edit/{id} (id=${propietario.id}) }"
-									class="btn btn-success btn-sm" role="button" title="Editar"><i
-										class="fas fa-user-edit" aria-hidden="true"></i></a> <a
-									th:href="@{/propietarios/delete/{id} (id=${propietario.id})}"
-									onclick="return confirm('¿Estas seguro?')"
-									class="btn btn-success btn-sm" role="button" title="Eliminar"><i
-										class="fas fa-trash" aria-hidden="true"></i></a></td>
+								<td>
+								
+								<a  sec:authorize="hasAnyAuthority('ADMINISTRADOR')" th:href="@{/propietarios/edit/{id} (id=${propietario.id}) }"
+									   class="btn btn-success btn-sm" role="button" title="Editar">
+										<i class="fas fa-user-edit" aria-hidden="true"></i> 
+									</a>
+								
+								
+								    <a sec:authorize="hasAnyAuthority('ADMINISTRADOR')" th:href="@{/propietarios/delete/{id} (id=${propietario.id})}"
+									   onclick="return confirm('¿Estas seguro?')"
+									   class="btn btn-success btn-sm" role="button" title="Eliminar">
+										<i class="fas fa-trash" aria-hidden="true"></i>
+									</a>
+								</td>
+								
 							</tr>
 						</tbody>
 					</table>

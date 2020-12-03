@@ -38,11 +38,19 @@ public class DatabaseWebSecurity extends WebSecurityConfigurerAdapter {
 		"/js/**").permitAll()
 	// Las vistas públicas no requieren autenticación
 		.antMatchers("/",
-		"/home",
 		"/administrador/loginAdmin",
-		"/visitas/**",
-		"/propietarios/**",
-		"/porteros/**").permitAll()
+		"/porteros/loginPorteria").permitAll()
+	// Asignar permisos a URLs por ROLES
+		.antMatchers("/home").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
+		.antMatchers("/propietarios/view/{id}").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
+		.antMatchers("/propietarios/delete/{id}").hasAnyAuthority("ADMINISTRADOR")
+		.antMatchers("/propietarios/edit/{id}").hasAnyAuthority("ADMINISTRADOR")
+		.antMatchers("/visitas/delete/{id}").hasAnyAuthority("ADMINISTRADOR","PORTERO")
+		.antMatchers("/visitas/edit/{id}").hasAnyAuthority("ADMINISTRADOR","PORTERO")
+		.antMatchers("/visitas/create").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
+		.antMatchers("/visitas/save").hasAnyAuthority("ADMINISTRADOR","PORTERO")
+		.antMatchers("/visitas/index").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
+		.antMatchers("/porteros/**").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
 	// Todas las demás URLs de la Aplicación requieren autenticación
 		.anyRequest().authenticated()
 	// El formulario de Login no requiere autenticacion

@@ -79,7 +79,7 @@ public class PropietarioController {
 	public String verDetalle(@PathVariable("id") int idPropietario, Model model) {
 		Propietario propietario = servicePropietario.buscarPorId(idPropietario);
 		model.addAttribute("propietario", propietario);
-		return"detalle";
+		return"propietario/detalle";
 	}
 
 }
