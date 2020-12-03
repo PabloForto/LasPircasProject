@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.forto.barrio.model.Propietario;
 import com.forto.barrio.service.IPropietarioService;
 
+
 @Controller
 public class HomeController {
 
 	@Autowired
 	private IPropietarioService servicePropietario;
+	
 
 	@GetMapping("/")
 	public String indexGeneral() {

@@ -39,7 +39,6 @@ public class PropietarioController {
 
 	@GetMapping("/create")
 	public String crear(Propietario propietario, Model model) {
-
 		return "propietario/formPropietarios";
 	}
 
