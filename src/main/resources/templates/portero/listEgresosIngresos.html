@@ -55,6 +55,7 @@
 								<th scope="col">Estatus</th>
 								<th scope="col">Egreso</th>
 								<th scope="col">Ingreso</th>
+								<th scope="col"></th>
                       		</tr>
 						</thead>
 						<tbody>
@@ -71,11 +72,12 @@
 								<td th:text="${r.egreso}"></td>
 								<td th:text="${r.ingreso}"></td>
 								<td><a th:href="@{/porteros/generarEgreso/{id} (id=${r.id}) }"
-									   class="btn btn-success btn-sm" role="button" title="Editar"><i
+									   class="btn-group-vertical" role="button" title="Egreso"><i
 									   class="fas fa-user-edit" aria-hidden="true"></i>
 									</a>
 								</td>
 						</tbody>
+	
 					</table>
 				</div>
 			</div>
