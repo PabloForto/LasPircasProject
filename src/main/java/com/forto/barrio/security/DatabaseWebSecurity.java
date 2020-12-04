@@ -43,11 +43,11 @@ public class DatabaseWebSecurity extends WebSecurityConfigurerAdapter {
 		.antMatchers("/",
 		"/bcrypt/**").permitAll()
 	// Asignar permisos a URLs por ROLES
-//		.antMatchers("/home").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
+		.antMatchers("/home").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
 		.antMatchers("/propietarios/view/{id}").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
 		.antMatchers("/propietarios/delete/{id}").hasAnyAuthority("ADMINISTRADOR")
 		.antMatchers("/propietarios/edit/{id}").hasAnyAuthority("ADMINISTRADOR")
-		.antMatchers("/visitas/delete/{id}").hasAnyAuthority("ADMINISTRADOR","PORTERO")
+		.antMatchers("/visitas/delete/{id}").hasAnyAuthority("ADMINISTRADOR")
 		.antMatchers("/visitas/edit/{id}").hasAnyAuthority("ADMINISTRADOR","PORTERO")
 		.antMatchers("/visitas/create").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
 		.antMatchers("/visitas/save").hasAnyAuthority("ADMINISTRADOR","PORTERO")

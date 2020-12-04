@@ -33,9 +33,9 @@
 			</li>
 
 		</ul>
-		<div sec:authorize="isAnonymous()">
-			<a class="btn btn-primary" th:href="@{/index}">Ingresar</a>&nbsp;
-		</div>
+<!-- 		<div sec:authorize="isAnonymous()"> -->
+<!-- 			<a class="btn btn-primary" th:href="@{/index}">Ingresar</a>&nbsp; -->
+<!-- 		</div> -->
 		<div sec:authorize="isAuthenticated()">
 		<span class="text-light">Bienvenido</span>&nbsp;<span class="text-light" sec:authentication="name"></span>&nbsp;
 			<a class="btn btn-primary" th:href="@{/logout}">Salir</a>
