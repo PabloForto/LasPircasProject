@@ -1,8 +1,3 @@
-/*
- * Controlador encargado de realizar los trabajos de los registros tanto de ingreso/egresos
- * de propietarios,visitas.
- */
-
 package com.forto.barrio.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,17 +31,11 @@ public class PorteroController {
 	
 	@Autowired
 	private IRegistroService serviceRegistro;
+	
 	@Autowired
 	private IRegistroVService serviceRegistroV;
 	
-	
-	@GetMapping("/loginP")
-	public String loginPortero() {
-		return"portero/loginPortero";
-	}
-	
-	
-	
+		
 	/*
 	 * Metodos encargado de devolver la vista de registros de egresos/ingresos de los Propietarios.
 	 */

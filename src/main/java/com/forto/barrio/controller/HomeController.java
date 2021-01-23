@@ -1,20 +1,15 @@
-/*
- * Controlador encargado de mostrar el Home,Logueo este controlador 
- * depende de quien ingrese si es un administrador o un portero.... 
- * proximamente tendria que poder ingresar la parter de los usuarios(propietarios)
- * 
- */
-
 package com.forto.barrio.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +40,13 @@ public class HomeController {
 		return "indexGeneral";
 	}
 	
+	/**
+	 * Método que esta mapeado al botón Ingresar en el menú
+	 * 
+	 * @param authentication
+	 * @param session
+	 * @return
+	 */
 	@GetMapping("/index")
 	public String mostrarIndex(Authentication auth, HttpSession session) {
 		String username = auth.getName();
@@ -63,6 +65,12 @@ public class HomeController {
 		return"redirect:/home";
 	}
 
+	/**
+	 * Método que esta mapeado el inicio ya logueado 
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/home")
 	public String mostrarHome(Model model) {
 		List<Propietario> lista = servicePropietario.buscarTodos();
@@ -70,11 +78,36 @@ public class HomeController {
 		return "home";
 	}
 	
+	/**
+	 * Método que muestra el formulario de login personalizado.
+	 * 
+	 * @return
+	 */
 	@GetMapping("/login")
 	public String loginA() {
 		return"loginAdministrador";
 	}
 	
+	/**
+	 * Método personalizado para cerrar la sesión del usuario
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request){
+		SecurityContextLogoutHandler logoutHandler =
+		new SecurityContextLogoutHandler();
+		logoutHandler.logout(request, null, null);
+		return "redirect:/";
+	}
+	
+	/**
+	 * Utileria para encriptar texto con el algorito BCrypt
+	 * 
+	 * @param texto
+	 * @return
+	 */
 	@GetMapping("/bcrypt/{texto}")
 	@ResponseBody
 	public String encriptar(@PathVariable("texto") String texto) {

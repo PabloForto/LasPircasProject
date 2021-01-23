@@ -30,11 +30,26 @@ public class VisitaController {
 		return "visita/listVisita";
 	}
 	
+	/**
+	 * Método que muestra el formulario para crear una nueva Visita
+	 * 
+	 * @param visita
+	 * @return
+	 */
 	@GetMapping("/create")
 	public String crear(Visita visita, Model model) {
 		return"visita/formVisita";
 	}
 	
+	/**
+	 * Método que guarda una Visita en la base de datos
+	 * 
+	 * @param visita
+	 * @param result
+	 * @param model
+	 * @param attributes
+	 * @return
+	 */
 	@PostMapping("/save")
 	public String guardar(Visita visita, BindingResult result, RedirectAttributes attribute) {
 		if(result.hasErrors()) {
@@ -50,6 +65,13 @@ public class VisitaController {
 		
 	}
 	
+	/**
+	 * Método que elimina una Visita de la base de datos
+	 * 
+	 * @param idVisita
+	 * @param attributes
+	 * @return
+	 */
 	@GetMapping("/delete/{id}")
 	public String eliminar(@PathVariable("id") int idVisita, Model model, RedirectAttributes attributes) {
 		System.out.println("Borrando propietario con id: " + idVisita);
@@ -58,6 +80,13 @@ public class VisitaController {
 		return "redirect:/visitas/index";
 	}
 	
+	/**
+	 * Método que renderiza el formulario HTML para editar una visita
+	 * 
+	 * @param idVisita
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/edit/{id}")
 	public String editar(@PathVariable("id") int idVisita, Model model) {
 		Visita visita = serviceVisita.buscarPorId(idVisita);

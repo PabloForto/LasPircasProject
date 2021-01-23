@@ -22,9 +22,9 @@ public class DatabaseWebSecurity extends WebSecurityConfigurerAdapter {
 		
 		auth.jdbcAuthentication().dataSource(dataSource)
 		.usersByUsernameQuery("select username, password, estatus from usuario where username=?")
-		.authoritiesByUsernameQuery("select u.username, p.perfil from usuario_perfiles up " +
-		"inner join usuario u on u.id = up.Usuario_id " +
-		"inner join perfil p on p.id = up.perfiles_id " +
+		.authoritiesByUsernameQuery("select u.username, p.perfil from usuarioperfil up " +
+		"inner join usuario u on u.id = up.idUsuario " +
+		"inner join perfil p on p.id = up.idPerfil " +
 		"where u.username = ?");
 	}
 	
@@ -53,6 +53,7 @@ public class DatabaseWebSecurity extends WebSecurityConfigurerAdapter {
 		.antMatchers("/visitas/save").hasAnyAuthority("ADMINISTRADOR","PORTERO")
 		.antMatchers("/visitas/index").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
 		.antMatchers("/porteros/**").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
+		.antMatchers("/usuarios/**").hasAnyAuthority("ADMINISTRADOR")
 	// Todas las demás URLs de la Aplicación requieren autenticación
 		.anyRequest().authenticated()
 	// El formulario de Login no requiere autenticacion

@@ -1,3 +1,6 @@
+/**
+ * Esta clase representa una entidad (un registro) en la tabla de Registros de visitas de ingresos y egresos de la base de datos
+ */
 package com.forto.barrio.model;
 
 import java.util.Date;

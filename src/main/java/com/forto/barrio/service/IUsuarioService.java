@@ -19,5 +19,11 @@ public interface IUsuarioService {
 	void cargar(Integer idUsuario);
 	
 	Usuario buscarPorUsername(String username);
+	
+	Usuario buscarPorId(Integer idUsusario);
+	
+	int bloquear(int idUsuario);
+	
+	int activar(int idUsuario);
 
 }

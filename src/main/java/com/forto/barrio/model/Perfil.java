@@ -1,14 +1,14 @@
+/**
+ * Esta clase representa una entidad (un registro) en la tabla de Perfiles de la base de datos
+ */
 package com.forto.barrio.model;
-
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/*
- * Entidad Perfil.
- */
+
 
 @Entity
 public class Perfil {
@@ -16,9 +16,7 @@ public class Perfil {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
 	private String perfil;
-	
 	
 	/**
 	 * @return the id

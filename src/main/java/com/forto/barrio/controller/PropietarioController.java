@@ -37,11 +37,26 @@ public class PropietarioController {
 		return "propietario/listPropietarios";
 	}
 
+	/**
+	 * Método que muestra el formulario para crear un nuevo Propietario
+	 * 
+	 * @param propietario
+	 * @return
+	 */
 	@GetMapping("/create")
 	public String crear(Propietario propietario, Model model) {
 		return "propietario/formPropietarios";
 	}
 
+	/**
+	 * Método que guarda un Propietario en la base de datos
+	 * 
+	 * @param propietario
+	 * @param result
+	 * @param model
+	 * @param attributes
+	 * @return
+	 */
 	@PostMapping("/save")
 	public String guardar(Propietario propietario, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
@@ -57,17 +72,28 @@ public class PropietarioController {
 		return "redirect:/propietarios/index";
 	}
 
-	/*
-	 * !!!Modificar por que no esta eliminando  ¿tambien tiene que eliminar el registro?!!!!
+	/**
+	 * Método que elimina un Propietario de la base de datos
+	 * 
+	 * @param idPropietario
+	 * @param attributes
+	 * @return
 	 */
 	@GetMapping("/delete/{id}")
 	public String eliminar(@PathVariable("id") Integer idPropietario, Model model, RedirectAttributes attributes) {
-		//System.out.println("Borrando propietario con id: " + idPropietario);
+		System.out.println("Borrando propietario con id: " + idPropietario);
 		servicePropietario.eliminar(idPropietario);
 		attributes.addFlashAttribute("msg", "Propietario eliminado!");
 		return "redirect:/propietarios/index";
 	}
 
+	/**
+	 * Método que renderiza el formulario HTML para editar un propietario
+	 * 
+	 * @param idPropietario
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/edit/{id}")
 	public String editar(@PathVariable("id") int idPropietario, Model model) {
 		Propietario propietario = servicePropietario.buscarPorId(idPropietario);
@@ -75,6 +101,13 @@ public class PropietarioController {
 		return "propietario/formPropietarios";
 	}
 	
+	/**
+	 * Método para renderizar la vista de los Detalles para una determinada Vacante
+	 * 
+	 * @param idPropietario
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/view/{id}")
 	public String verDetalle(@PathVariable("id") int idPropietario, Model model) {
 		Propietario propietario = servicePropietario.buscarPorId(idPropietario);

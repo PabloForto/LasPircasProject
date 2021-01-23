@@ -29,11 +29,11 @@
 
 			<div class="card">
 				<h4 class="card-header">
-					<strong>Listado de Propietarios/Inquilinos</strong>
+					<strong>Usuarios/Administradores</strong>
 				</h4>
 				<div class="card-body">
-					<a class="btn btn-primary" th:href="@{/propietarios/create}"
-						role="button"><i title="Agregar Propietario"
+					<a class="btn btn-primary" th:href="@{/usuarios/signup}"
+						role="button"><i title="Agregar Portero"
 						class="fas fa-file" aria-hidden="true"></i> Nueva</a>
 					<hr>
 					<div th:if="${msg != null}" class='alert alert-success'
@@ -44,36 +44,32 @@
 								<th scope="col">Id</th>
 								<th scope="col">Nombre</th>
 								<th scope="col">Apellido</th>
-								<th scope="col">Vehiculo</th>
-								<th scope="col">Dominio</th>
-								<th scope="col">Lote</th>
-								<th scope="col">Casa</th>
-								<th scope="col">Categoria</th>
+								<th scope="col">Username</th>
 								<th scope="col">Estatus</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="propietario : ${propietarios}">
-								<td th:text="${propietario.id}"></td>
-								<td th:text="${propietario.nombre}"></td>
-								<td th:text="${propietario.apellido}"></td>
-								<td th:text="${propietario.vehiculo}"></td>
-								<td th:text="${propietario.dominio}"></td>
-								<td th:text="${propietario.lote}"></td>
-								<td th:text="${propietario.numero}"></td>
-								<td th:text="${propietario.categoria}"></td>
-								<td th:text="${propietario.estatus}"></td>
-								<td><a sec:authorize="hasAnyAuthority('ADMINISTRADOR')"
-									th:href="@{/propietarios/edit/{id} (id=${propietario.id}) }"
-									class="btn btn-success btn-sm" role="button" title="Editar">
-										<i class="fas fa-user-edit" aria-hidden="true"></i>
-								</a> <a sec:authorize="hasAnyAuthority('ADMINISTRADOR','PORTERO')"
-									th:href="@{/propietarios/delete/{id} (id=${propietario.id}) }"
-									onclick="return confirm('¿Estas seguro?')"
-									class="btn btn-success btn-sm" role="button" title="Eliminar"><i
-										class="fas fa-trash" aria-hidden="true"></i></a></td>
+							<tr th:each="u: ${usuarios}">
+								<td th:text="${u.id}"></td>
+								<td th:text="${u.nombre}"></td>
+								<td th:text="${u.apellido}"></td>
+								<td th:text="${u.username}"></td>
+ 								<td th:text="${u.estatus == 1 ? 'Activo' : 'Bloqueado' }">Activo</td>
+ 								<td>
+ 									<a sec:authorize="hasAnyAuthority('ADMINISTRADOR')"
+									   th:href="@{/usuarios/delete/{id} (id=${u.id})}"
+									   onclick="return confirm('¿Estas seguro?')"
+									   class="btn btn-success btn-sm" role="button" title="Eliminar">
+									   <i class="fas fa-trash" aria-hidden="true"></i>
+									</a>
+									<span th:switch="${u.estatus}"> 
+                    
+                      <a th:case="'1'" th:href="@{/usuarios/lock/{id} (id=${u.id}) }" onclick="return confirm('¿Quiere bloquear el acceso al usuario?')" class="btn btn-success btn-sm" role="button" title="Bloquear el acceso al sistema para este usuario."><i class="fas fa-lock" aria-hidden="true"></i></a>	
+					  <a th:case="'0'" th:href="@{/usuarios/unlock/{id} (id=${u.id}) }" onclick="return confirm('¿Desea desbloquear el usuario?')" class="btn btn-success btn-sm" role="button" title="Permitir el acceso al sistema a este usuario."><i class="fas fa-unlock" aria-hidden="true"></i></a>
+					   
+					</span>
+								</td>
 
-							</tr>
 						</tbody>
 					</table>
 
