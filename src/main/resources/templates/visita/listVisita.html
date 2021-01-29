@@ -67,7 +67,7 @@
 								<td th:text="${visita.categoria}"></td>
 								<td>
 								<a  sec:authorize="hasAnyAuthority('ADMINISTRADOR','PORTERO')" th:href="@{/visitas/edit/{id} (id=${visita.id}) }" class="btn btn-success btn-sm" role="button" title="Editar"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a> 
-								<a  sec:authorize="hasAnyAuthority('ADMINISTRADOR','PORTERO')" th:href="@{/visitas/delete/{id} (id=${visita.id}) }"	onclick="return confirm('¿Estas seguro?')" class="btn btn-success btn-sm" role="button" title="Eliminar"><i	class="fas fa-trash" aria-hidden="true"></i></a>
+<!-- 								<a  sec:authorize="hasAnyAuthority('ADMINISTRADOR','PORTERO')" th:href="@{/visitas/delete/{id} (id=${visita.id}) }"	onclick="return confirm('¿Estas seguro?')" class="btn btn-success btn-sm" role="button" title="Eliminar"><i	class="fas fa-trash" aria-hidden="true"></i></a> -->
 								</td>
 							</tr>
 						</tbody>
