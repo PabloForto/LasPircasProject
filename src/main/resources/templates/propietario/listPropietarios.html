@@ -44,6 +44,7 @@
 								<th scope="col">Id</th>
 								<th scope="col">Nombre</th>
 								<th scope="col">Apellido</th>
+								<th scope="col">Documento</th>
 								<th scope="col">Vehiculo</th>
 								<th scope="col">Dominio</th>
 								<th scope="col">Lote</th>
@@ -57,6 +58,7 @@
 								<td th:text="${propietario.id}"></td>
 								<td th:text="${propietario.nombre}"></td>
 								<td th:text="${propietario.apellido}"></td>
+								<td th:text="${propietario.documento}"></td>
 								<td th:text="${propietario.vehiculo}"></td>
 								<td th:text="${propietario.dominio}"></td>
 								<td th:text="${propietario.lote}"></td>
@@ -68,11 +70,11 @@
 									class="btn btn-success btn-sm" role="button" title="Editar">
 										<i class="fas fa-pencil-alt" aria-hidden="true"></i>
 								</a> 
-<!-- 								<a sec:authorize="hasAnyAuthority('ADMINISTRADOR','PORTERO')" -->
-<!-- 									th:href="@{/propietarios/delete/{id} (id=${propietario.id}) }" -->
-<!-- 									onclick="return confirm('¿Estas seguro?')" -->
-<!-- 									class="btn btn-success btn-sm" role="button" title="Eliminar"><i -->
-<!-- 										class="fas fa-trash" aria-hidden="true"></i></a></td> -->
+								<a sec:authorize="hasAnyAuthority('ADMINISTRADOR','PORTERO')"
+									th:href="@{/propietarios/delete/{id} (id=${propietario.id}) }"
+									onclick="return confirm('¿Estas seguro?')"
+									class="btn btn-success btn-sm" role="button" title="Eliminar"><i
+										class="fas fa-trash" aria-hidden="true"></i></a></td>
 
 							</tr>
 						</tbody>
