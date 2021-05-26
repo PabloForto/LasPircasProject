@@ -22,9 +22,11 @@ public class Propietario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	private String lote;
+//	private String lote;
+//	
+//	private Integer numero;
 	
-	private Integer numero;
+	private String propiedad;
 	
 	private String nombre;
 	
@@ -48,6 +50,10 @@ public class Propietario {
 	@OneToMany
 	private List<Registro> registros;
 	
+	@OneToMany
+	private List<Trabajador> trabajador;
+	
+	
 		
 	/**
 	 * @return the id
@@ -64,32 +70,34 @@ public class Propietario {
 	}
 	
 	/**
-	 * @return the lote
-	 */
-	public String getLote() {
-		return lote;
-	}
+//	 * @return the lote
+//	 */
+//	public String getLote() {
+//		return lote;
+//	}
+//	
+//	/**
+//	 * @param lote the lote to set
+//	 */
+//	public void setLote(String lote) {
+//		this.lote = lote;
+//	}
+//	
+//	/**
+//	 * @return the numero
+//	 */
+//	public Integer getNumero() {
+//		return numero;
+//	}
+//	
+//	/**
+//	 * @param numero the numero to set
+//	 */
+//	public void setNumero(Integer numero) {
+//		this.numero = numero;
+//	}
 	
-	/**
-	 * @param lote the lote to set
-	 */
-	public void setLote(String lote) {
-		this.lote = lote;
-	}
 	
-	/**
-	 * @return the numero
-	 */
-	public Integer getNumero() {
-		return numero;
-	}
-	
-	/**
-	 * @param numero the numero to set
-	 */
-	public void setNumero(Integer numero) {
-		this.numero = numero;
-	}
 	
 	/**
 	 * @return the nombre
@@ -98,12 +106,28 @@ public class Propietario {
 		return nombre;
 	}
 	
+	
 	/**
 	 * @param nombre the nombre to set
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+		
+	/**
+	 * @return the propiedad
+	 */
+	public String getPropiedad() {
+		return propiedad;
+	}
+
+	/**
+	 * @param propiedad the propiedad to set
+	 */
+	public void setPropiedad(String propiedad) {
+		this.propiedad = propiedad;
+	}
+
 	
 	/**
 	 * @return the apellido
@@ -227,13 +251,29 @@ public class Propietario {
 	}
 	
 	
+
+	/**
+	 * @return the trabajador
+	 */
+	public List<Trabajador> getTrabajador() {
+		return trabajador;
+	}
+
+	/**
+	 * @param trabajador the trabajador to set
+	 */
+	public void setTrabajador(List<Trabajador> trabajador) {
+		this.trabajador = trabajador;
+	}
+
 	@Override
 	public String toString() {
-		return "Propietario [id=" + id + ", lote=" + lote + ", numero=" + numero + ", nombre=" + nombre + ", apellido="
-				+ apellido + ", documento=" + documento + ", telefono=" + telefono + ", email=" + email + ", categoria="
-				+ categoria + ", vehiculo=" + vehiculo + ", dominio=" + dominio + ", estatus=" + estatus+ "]";
+		return "Propietario [id=" + id + ", propiedad=" + propiedad + ", nombre=" + nombre + ", apellido=" + apellido
+				+ ", documento=" + documento + ", telefono=" + telefono + ", email=" + email + ", categoria="
+				+ categoria + ", vehiculo=" + vehiculo + ", dominio=" + dominio + ", estatus=" + estatus
+				+ ", registros=" + registros + ", trabajador=" + trabajador + "]";
 	}
-	
+
 	
 	
 }

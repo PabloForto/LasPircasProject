@@ -32,7 +32,7 @@
 						<select id="selectPropietarios" class="form-control">
    	 						<option th:text="${'Egresar'}" th:value="${''}">
 							<option th:each="p : ${propietarios}"
-								    th:text="${p.nombre} + ' ' + ${p.apellido} + '  Dominio: ' + ${p.dominio} + ' ' + ${p.lote} + ' ' + ${p.numero}"
+								    th:text="${p.nombre} + ' ' + ${p.apellido} + '  Dominio: ' + ${p.dominio} + ' ' + ${p.propiedad}"
 								    th:value="${p.id}">
 						</select>
 						<div th:if="${msg != null}" class='alert alert-success'
@@ -50,8 +50,9 @@
 								<th scope="col">Categoria</th>
 								<th scope="col">Vehiculo</th>
 								<th scope="col">Dominio</th>
-								<th scope="col">Lote</th>
-								<th scope="col">Casa</th>
+								<th scope="col">Propiedad</th>
+<!-- 								<th scope="col">Lote</th> -->
+<!-- 								<th scope="col">Casa</th> -->
 								<th scope="col">Egreso</th>
 								<th scope="col">Ingreso</th>
 								<th scope="col"></th>
@@ -65,13 +66,14 @@
 								<td th:text="${r.propietario.categoria}"></td>
 								<td th:text="${r.propietario.vehiculo}"></td>
 								<td th:text="${r.propietario.dominio}"></td>
-								<td th:text="${r.propietario.lote}"></td>
-								<td th:text="${r.propietario.numero}"></td>
+								<td th:text="${r.propietario.propiedad}"></td>
+<!-- 								<td th:text="${r.propietario.lote}"></td> -->
+<!-- 								<td th:text="${r.propietario.numero}"></td> -->
 								<td th:text="${r.egreso}"></td>
 								<td th:text="${r.ingreso}"></td>
 								<td>
 									<a th:href="@{/porteros/generarIngreso/{id} (id=${r.id}) }"
-									    class="btn-group-vertical" role="button" title="Editar"><i
+									    class="btn-group-vertical" role="button" title="Marcar"><i
 									   class="fas fa-user-edit" aria-hidden="true"></i>
 									</a>
 								</td>

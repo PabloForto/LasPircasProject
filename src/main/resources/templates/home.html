@@ -63,13 +63,13 @@
 								th:text="${propietario.categoria}"></span>
 						</h6>
 						<h6 class="card-title">
-							<strong>Lote: </strong> <span th:text="${propietario.lote}">
+							<strong>Propiedad: </strong> <span th:text="${propietario.propiedad}">
 							</span>
 						</h6>
-						<h6 class="card-title">
-							<strong>Casa: </strong> <span th:text="${propietario.numero}">
-							</span>
-						</h6>
+<!-- 						<h6 class="card-title"> -->
+<!-- 							<strong>Casa: </strong> <span th:text="${propietario.numero}"> -->
+<!-- 							</span> -->
+<!-- 						</h6> -->
 						<p>
 							<a class="btn btn-secondary"
 								th:href="@{/propietarios/view/{id} (id=${propietario.id}) }"

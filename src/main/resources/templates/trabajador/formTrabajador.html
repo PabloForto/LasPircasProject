@@ -8,7 +8,7 @@
 <meta name="author" content="">
 <link rel="icon" th:href="@{/favicon.ico}">
 
-<title>LasPircasApp | Creación de Informacion del
+<title>LasPircasApp | Carga de Informacion del
 	Propietario/Inquilino</title>
 <!-- Bootstrap core CSS -->
 <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
@@ -32,10 +32,10 @@
 
 			<div class="card">
 				<h4 class="card-header">
-					<strong>Datos de los propietarios/inquilinos</strong>
+					<strong>Datos del Trabajador</strong>
 				</h4>
 				<div class="card-body">
-					<form th:action="@{/propietarios/save}" method="post" th:object=${propietario}>
+					<form th:action="@{/trabajador/save}" method="post" th:object=${trabajador}>
 					<div th:if="${#fields.hasErrors('*')}" class='alert alert-danger'
 							role='alert'>
 							Por favor corrija los siguientes errores:
@@ -48,7 +48,7 @@
 								<div class="form-group">
 									<label for="nombre">Nombre</label> 
 									<input type="text"	class="form-control" th:field="*{nombre}" id="nombre" name="nombre"	placeholder="Nombre del Propietario/Inquilino" required="required">
-									<input type="hidden" th:field="*{id}">
+									<input type="hidden" th:field="*{id_trabajador}">
 								</div>
 							</div>
 							<div class="col-md-9">
@@ -65,13 +65,58 @@
 									<input type="text"	class="form-control" th:field="*{documento}" id="documento" name="documento" placeholder="Documento del Propietario/Inquilino"	required="required">
 								</div>
 							</div>
+						</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="categoria">Categoria</label>
+									 <select class="form-control" th:field="*{categoria}" name="categoria" id="categoria">
+										<option value="niñera">Niñera</option>
+										<option value="obra">Obra</option>
+										<option value="particular">Particular</option>
+									</select>
+								</div>
+							</div>
+								<div class="col-md-9">
+								<div class="form-group">
+									<label for="imagen">imageno</label> 
+									<input type="text" class="form-control" th:field="*{imagen}" id="imagen" name="imagen" placeholder="imagen">
+								</div>
+							</div>
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="documentacion">Documentacion</label> 
+									<input type="text"	class="form-control" th:field="*{documentacion}" id="documentacion" name="documentacion" placeholder="Documento del Propietario/Inquilino"	required="required">
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="propiedad">Ubicacion</label> 
+									<input type="text"	class="form-control" th:field="*{propiedad}" id="propiedad" name="propiedad" placeholder="Propiedad" required="required">
+								</div>
+							</div>
+<!-- 							<div class="col-md-9"> -->
+<!-- 								<div class="form-group"> -->
+<!-- 									<label for="apellido">Lotes</label>  -->
+<!-- 									<input type="text" class="form-control" th:field="*{lote}" id="lote" name="lote"	placeholder="Lote"	required="required"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+						</div>
+						<div class="row">
+<!-- 							<div class="col-md-3"> -->
+<!-- 								<div class="form-group"> -->
+<!-- 									<label for="documento">Numero</label>  -->
+<!-- 									<input type="text"	class="form-control" th:field="*{numero}" id="numero" name="numero" placeholder="Numero" required="required"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
 							<div class="col-md-9">
 								<div class="form-group">
-									<label for="apellido">Telefono</label> 
-									<input type="text" class="form-control" th:field="*{telefono}" id="telefono" name="telefono"	placeholder="Telfono del Propietario/Inquilino"	required="required">
+									<label for="apellido">imageno</label> 
+									<input type="text" class="form-control" th:field="*{imagen}" id="imagen" name="imagen" placeholder="imagen">
 								</div>
 							</div>
 						</div>
+						
 						<div class="row">
 <!-- 							<div class="col-md-3"> -->
 <!-- 								<div class="form-group"> -->
@@ -112,55 +157,51 @@
 <!-- 										<option value="19">19</option> -->
 <!-- 										<option value="20">20</option> -->
 <!-- 										<option value="21">21</option> -->
+<!-- 										<option value="22">22</option> -->
 <!-- 										<option value="23">23</option> -->
 <!-- 									</select> -->
 <!-- 								</div> -->
-<!-- 							</div>			<option value="22">22</option> -->
-							<div class="col-md-3">
-								<div class="form-group">
-									<label for="propiedad">Propiedad</label> 
-									<input type="text"	class="form-control" th:field="*{propiedad}" id="propiedad" name="propiedad" placeholder="Vehiculo del Propietario/Inquilino" required="required">
-								</div>
-							</div>							
+<!-- 							</div> -->
 						
-							<div class="col-md-3">
-								<div class="form-group">
-									<label for="vehiculo">Vehiculo</label> 
-									<input type="text"	class="form-control" th:field="*{vehiculo}" id="vehiculo" name="vehiculo"	placeholder="Vehiculo del Propietario/Inquilino" required="required">
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label for="dominio">Dominio/Patente</label> 
-									<input type="text"	class="form-control" th:field="*{dominio}" id="dominio" name="dominio" placeholder="Dominio del vehiculo del Propietario/Inquilino" required="required">
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label for="categoria">Categoria</label>
-									 <select class="form-control" th:field="*{categoria}" name="categoria" id="categoria">
-										<option value="propietario">Propietario</option>
-										<option value="inquilino">Inquilino</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label for="categoria">Estatus</label>
-									 <select class="form-control" th:field="*{estatus}" name="estatus" id="estatus">
-										<option value="habitada">Habitada</option>
-										<option value="obra">Obra</option>
-										<option value="terreno">Lote Vacio</option>
-									</select>
-								</div>
-							</div>
+<!-- 							<div class="col-md-3"> -->
+<!-- 								<div class="form-group"> -->
+<!-- 									<label for="vehiculo">Vehiculo</label>  -->
+<!-- 									<input type="text"	class="form-control" th:field="*{vehiculo}" id="vehiculo" name="vehiculo"	placeholder="Vehiculo del Propietario/Inquilino" required="required"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="col-md-3"> -->
+<!-- 								<div class="form-group"> -->
+<!-- 									<label for="dominio">Dominio/Patente</label>  -->
+<!-- 									<input type="text"	class="form-control" th:field="*{dominio}" id="dominio" name="dominio" placeholder="Dominio del vehiculo del Propietario/Inquilino" required="required"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="col-md-3"> -->
+<!-- 								<div class="form-group"> -->
+<!-- 									<label for="categoria">Categoria</label> -->
+<!-- 									 <select class="form-control" th:field="*{categoria}" name="categoria" id="categoria"> -->
+<!-- 										<option value="propietario">Niñera</option> -->
+<!-- 										<option value="inquilino">Obra</option> -->
+<!-- 										<option value="inquilino">Particular</option> -->
+<!-- 									</select> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="col-md-3"> -->
+<!-- 								<div class="form-group"> -->
+<!-- 									<label for="categoria">Estatus</label> -->
+<!-- 									 <select class="form-control" th:field="*{estatus}" name="estatus" id="estatus"> -->
+<!-- 										<option value="habitada">Habitada</option> -->
+<!-- 										<option value="obra">Obra</option> -->
+<!-- 										<option value="terreno">Lote Vacio</option> -->
+<!-- 									</select> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
 							 
-						<div class="col-md-3">
-								<div class="form-group">
-									<label for="email">Email</label> 
-									<input type="text" class="form-control" th:field="*{email}" id="email" name="email" placeholder="Email del Propietario/Inquilino" required="required">
-								</div>
-							</div>
+<!-- 						<div class="col-md-3"> -->
+<!-- 								<div class="form-group"> -->
+<!-- 									<label for="email">Email</label>  -->
+<!-- 									<input type="text" class="form-control" th:field="*{email}" id="email" name="email" placeholder="Email del Propietario/Inquilino" required="required"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
 						<button type="submit" class="btn btn-primary">Guardar</button>
 					</form>
 				</div>

@@ -61,7 +61,7 @@ public class PropietarioController {
 	public String guardar(Propietario propietario, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			for (ObjectError error : result.getAllErrors()) {
-				System.out.println("Ocurrio un error: " + error.getDefaultMessage());
+				System.out.println("Ocurrio un error: " + error);
 			}
 			return "propietario/formPropietarios";
 		}
@@ -102,7 +102,7 @@ public class PropietarioController {
 	}
 	
 	/**
-	 * Método para renderizar la vista de los Detalles para una determinada Vacante
+	 * Método para renderizar la vista de los Detalles para un determinado Propietario.
 	 * 
 	 * @param idPropietario
 	 * @param model

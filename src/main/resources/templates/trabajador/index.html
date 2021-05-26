@@ -29,10 +29,10 @@
 
 			<div class="card">
 				<h4 class="card-header">
-					<strong>Listado de Propietarios/Inquilinos</strong>
+					<strong>Trabajadores</strong>
 				</h4>
 				<div class="card-body">
-					<a class="btn btn-primary" th:href="@{/propietarios/create}"
+					<a class="btn btn-primary" th:href="@{/trabajador/create}"
 						role="button"><i title="Agregar Propietario"
 						class="fas fa-file" aria-hidden="true"></i> Nueva</a>
 					<hr>
@@ -45,40 +45,41 @@
 								<th scope="col">Nombre</th>
 								<th scope="col">Apellido</th>
 								<th scope="col">Documento</th>
-								<th scope="col">Vehiculo</th>
-								<th scope="col">Dominio</th>
+								<th scope="col">Categoria</th>
+								<th scope="col">Imagen</th>
+								<th scope="col">Documentación</th>
 								<th scope="col">Propiedad</th>
 <!-- 								<th scope="col">Lote</th> -->
-<!-- 								<th scope="col">Casa</th> -->
-								<th scope="col">Categoria</th>
-								<th scope="col">Estatus</th>
+<!-- 								<th scope="col">Numero</th> -->
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="propietario : ${propietarios}">
-								<td th:text="${propietario.id}"></td>
-								<td th:text="${propietario.nombre}"></td>
-								<td th:text="${propietario.apellido}"></td>
-								<td th:text="${propietario.documento}"></td>
-								<td th:text="${propietario.vehiculo}"></td>
-								<td th:text="${propietario.dominio}"></td>
-								<td th:text="${propietario.propiedad}"></td>
-<!-- 								<td th:text="${propietario.lote}"></td> -->
-<!-- 								<td th:text="${propietario.numero}"></td> -->
-								<td th:text="${propietario.categoria}"></td>
-								<td th:text="${propietario.estatus}"></td>
-								<td><a sec:authorize="hasAnyAuthority('ADMINISTRADOR')"
-									th:href="@{/propietarios/edit/{id} (id=${propietario.id}) }"
-									class="btn btn-success btn-sm" role="button" title="Editar">
-										<i class="fas fa-pencil-alt" aria-hidden="true"></i>
-								</a> 
-								<a sec:authorize="hasAnyAuthority('ADMINISTRADOR','PORTERO')"
-									th:href="@{/propietarios/delete/{id} (id=${propietario.id}) }"
-									onclick="return confirm('¿Estas seguro?')"
-									class="btn btn-success btn-sm" role="button" title="Eliminar"><i
-										class="fas fa-trash" aria-hidden="true"></i></a></td>
-
-							</tr>
+							<tr th:each="trabajador : ${trabajador}">
+								<td th:text="${trabajador.id_trabajador}"></td>
+								<td th:text="${trabajador.nombre}"></td>
+								<td th:text="${trabajador.apellido}"></td>
+								<td th:text="${trabajador.documento}"></td>
+								<td th:text="${trabajador.categoria}"></td>
+								<td th:text="${trabajador.imagen}"></td>
+								<td th:text="${trabajador.documentacion}"></td>
+								<td th:text="${trabajador.propiedad}"></td>
+<!-- 								<td th:text="${trabajador.lote}"></td> -->
+<!-- 								<td th:text="${trabajador.numero}"></td> -->
+							</tr> 								
+<!-- 								<td><a sec:authorize="hasAnyAuthority('ADMINISTRADOR')" -->
+<!-- 									th:href="@{/propietarios/edit/{id} (id=${propietario.id}) }" -->
+<!-- 									class="btn btn-success btn-sm" role="button" title="Editar"> -->
+<!-- 										<i class="fas fa-pencil-alt" aria-hidden="true"></i> -->
+<!-- 								</a>  -->
+<!-- 								<a sec:authorize="hasAnyAuthority('ADMINISTRADOR','PORTERO')" -->
+<!-- 									th:href="@{/propietarios/delete/{id} (id=${propietario.id}) }" -->
+<!-- 									onclick="return confirm('¿Estas seguro?')" -->
+<!-- 									class="btn btn-success btn-sm" role="button" title="Eliminar"><i -->
+<!-- 										class="fas fa-trash" aria-hidden="true"></i></a></td> -->
+<!-- 							<tr th:each="propietario : ${propietario}"> -->
+<!-- 								<td th:text="${propietario.nombre}"></td> -->
+								
+<!-- 							</tr> -->
 						</tbody>
 					</table>
 

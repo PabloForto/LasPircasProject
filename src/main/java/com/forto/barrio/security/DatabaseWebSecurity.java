@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class DatabaseWebSecurity extends WebSecurityConfigurerAdapter {
+	
 	@Autowired
 	private DataSource dataSource;
 
@@ -54,6 +55,7 @@ public class DatabaseWebSecurity extends WebSecurityConfigurerAdapter {
 		.antMatchers("/visitas/index").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
 		.antMatchers("/porteros/**").hasAnyAuthority("ADMINISTRADOR", "PORTERO")
 		.antMatchers("/usuarios/**").hasAnyAuthority("ADMINISTRADOR")
+		.antMatchers("/trabajador/**").hasAnyAuthority("ADMINISTRADOR")
 	// Todas las demás URLs de la Aplicación requieren autenticación
 		.anyRequest().authenticated()
 	// El formulario de Login no requiere autenticacion

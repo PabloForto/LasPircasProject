@@ -12,9 +12,9 @@ import com.forto.barrio.model.Propietario;
 
 public interface PropietarioRepository extends JpaRepository<Propietario, Integer> {
 
-	List<Propietario> findByLote(String lote);
+//	List<Propietario> findByLote(String lote);
 
-	List<Propietario> findByNumero(Integer numero);
+//	List<Propietario> findByNumero(Integer numero);
 
 	List<Propietario> findByNombre(String nombre);
 
@@ -28,12 +28,12 @@ public interface PropietarioRepository extends JpaRepository<Propietario, Intege
 
 	List<Propietario> findByDominio(String dominio);
 
-	List<Propietario> findByLoteAndNumeroOrderByLoteAsc(String lote, int numero);
+//	List<Propietario> findByLoteAndNumeroOrderByLoteAsc(String lote, int numero);
 
 	List<Propietario> findByNombreAndApellidoOrderByIdAsc(String nombre, String apellido);
 
-	List<Propietario> findByLoteAndNumeroAndNombreAndApellidoOrderByLoteAsc(String lote, int numero, String nombre,
-			String apellido);
+//	List<Propietario> findByLoteAndNumeroAndNombreAndApellidoOrderByLoteAsc(String lote, int numero, String nombre,
+//			String apellido);
 
 	// Sentencia para saber quienes son propietarios y quien son inquilinos dentro
 	// del barrio.

@@ -40,10 +40,10 @@ public class PropietarioService implements IPropietarioService {
 		return null;
 	}
 
-	public List<Propietario> buscarPorLoteYnumero(String lotePropietario, int numeroPropietario) {
-		return propietarioRepo.findByLoteAndNumeroOrderByLoteAsc(lotePropietario, numeroPropietario);
-
-	}
+//	public List<Propietario> buscarPorLoteYnumero(String lotePropietario, int numeroPropietario) {
+//		return propietarioRepo.findByLoteAndNumeroOrderByLoteAsc(lotePropietario, numeroPropietario);
+//
+//	}
 
 	public List<Propietario> buscarPorNombre(String nombrePropietario) {
 		return propietarioRepo.findByNombre(nombrePropietario);
@@ -59,13 +59,13 @@ public class PropietarioService implements IPropietarioService {
 
 	}
 
-	public List<Propietario> buscarPorLotePorNumeroPorNombrePorApellido(String lotePropietario, int numeroPropietario,
-			String nombrePropietario, String apellidoPropietario) {
-
-		return propietarioRepo.findByLoteAndNumeroAndNombreAndApellidoOrderByLoteAsc(lotePropietario, numeroPropietario,
-				nombrePropietario, apellidoPropietario);
-
-	}
+//	public List<Propietario> buscarPorLotePorNumeroPorNombrePorApellido(String lotePropietario, int numeroPropietario,
+//			String nombrePropietario, String apellidoPropietario){
+//
+//		return propietarioRepo.findByLoteAndNumeroAndNombreAndApellidoOrderByLoteAsc(lotePropietario, numeroPropietario,
+//				nombrePropietario, apellidoPropietario);
+//
+//	}
 
 	public List<Propietario> buscarPorNombrePorApellido(String nombrePropietario, String apellidoPropietario) {
 		return propietarioRepo.findByNombreAndApellidoOrderByIdAsc(nombrePropietario, apellidoPropietario);
