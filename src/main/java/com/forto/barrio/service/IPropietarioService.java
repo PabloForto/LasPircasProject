@@ -18,16 +18,18 @@ public interface IPropietarioService {
 
 //	List<Propietario> buscarPorLoteYnumero(String lotePropietario, int numeroPropietario);
 
-	List<Propietario> buscarPorNombre(String nombrePropietario);
-
-	List<Propietario> buscarPorApellido(String apellidoPropietario);
+//	List<Propietario> buscarPorNombre(String nombrePropietario);
+//
+//	List<Propietario> buscarPorApellido(String apellidoPropietario);
+	
+	List<Propietario> buscarPorNombreApellido(String nombreApellido);
 
 	List<Propietario> buscarPorDominio(String dominioPropietario);
 
 //	List<Propietario> buscarPorLotePorNumeroPorNombrePorApellido(String lotePropietario, int numeroPropietario,
 //			String nombrePropietario, String apellidoPropietario);
 
-	List<Propietario> buscarPorNombrePorApellido(String nombrePropietario, String apellidoPropietario);
+//	List<Propietario> buscarPorNombrePorApellido(String nombrePropietario, String apellidoPropietario);
 
 	void eliminar(Integer idPropietario);
 

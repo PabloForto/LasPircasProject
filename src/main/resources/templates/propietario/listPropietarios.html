@@ -28,22 +28,25 @@
 		<div class="container">
 
 			<div class="card">
-				<h4 class="card-header">
+				<div style="background-color: #F7B54F;">
+				<h4 class="card-header" >
 					<strong>Listado de Propietarios/Inquilinos</strong>
 				</h4>
+				</div>
 				<div class="card-body">
-					<a class="btn btn-primary" th:href="@{/propietarios/create}"
-						role="button"><i title="Agregar Propietario"
-						class="fas fa-file" aria-hidden="true"></i> Nueva</a>
+					<a class="btn btn-primary active" th:href="@{/propietarios/create}"
+						role="button" data-bs-toggle="button" aria-pressed="true"><i title="Agregar Propietario"
+						class="fas fa-save" aria-hidden="true"></i> Nueva</a>
 					<hr>
 					<div th:if="${msg != null}" class='alert alert-success'
 						th:text="${msg}" role='alert'></div>
-					<table class="table table-hover">
-						<thead class="thead-light">
+<!-- 					<table class="table table-hover"> -->
+                        <table class="table  table-striped">
+						<thead class="thead-dark">
 							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Nombre</th>
-								<th scope="col">Apellido</th>
+<!-- 								<th scope="col">Id</th> -->
+								<th scope="col">Nombre/Apellido</th>
+<!-- 								<th scope="col">Apellido</th> -->
 								<th scope="col">Documento</th>
 								<th scope="col">Vehiculo</th>
 								<th scope="col">Dominio</th>
@@ -56,9 +59,9 @@
 						</thead>
 						<tbody>
 							<tr th:each="propietario : ${propietarios}">
-								<td th:text="${propietario.id}"></td>
-								<td th:text="${propietario.nombre}"></td>
-								<td th:text="${propietario.apellido}"></td>
+<!-- 								<td th:text="${propietario.id}"></td> -->
+								<td th:text="${propietario.nombreApellido}"></td>
+<!-- 								<td th:text="${propietario.apellido}"></td> -->
 								<td th:text="${propietario.documento}"></td>
 								<td th:text="${propietario.vehiculo}"></td>
 								<td th:text="${propietario.dominio}"></td>
@@ -75,7 +78,7 @@
 								<a sec:authorize="hasAnyAuthority('ADMINISTRADOR','PORTERO')"
 									th:href="@{/propietarios/delete/{id} (id=${propietario.id}) }"
 									onclick="return confirm('¿Estas seguro?')"
-									class="btn btn-success btn-sm" role="button" title="Eliminar"><i
+									class="btn btn-danger btn-sm" role="button" title="Eliminar"><i
 										class="fas fa-trash" aria-hidden="true"></i></a></td>
 
 							</tr>

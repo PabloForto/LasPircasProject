@@ -28,9 +28,11 @@ public class Propietario {
 	
 	private String propiedad;
 	
-	private String nombre;
+//	private String nombre;
+//	
+//	private String apellido;
 	
-	private String apellido;
+	private String nombreApellido;
 	
 	private Integer documento;
 	
@@ -69,6 +71,8 @@ public class Propietario {
 		this.id = id;
 	}
 	
+	
+	
 	/**
 //	 * @return the lote
 //	 */
@@ -99,21 +103,35 @@ public class Propietario {
 	
 	
 	
-	/**
-	 * @return the nombre
-	 */
-	public String getNombre() {
-		return nombre;
-	}
-	
-	
-	/**
-	 * @param nombre the nombre to set
-	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+//	/**
+//	 * @return the nombre
+//	 */
+//	public String getNombre() {
+//		return nombre;
+//	}
+//	
+//	
+//	/**
+//	 * @param nombre the nombre to set
+//	 */
+//	public void setNombre(String nombre) {
+//		this.nombre = nombre;
+//	}
 		
+	/**
+	 * @return the nombreApellido
+	 */
+	public String getNombreApellido() {
+		return nombreApellido;
+	}
+
+	/**
+	 * @param nombreApellido the nombreApellido to set
+	 */
+	public void setNombreApellido(String nombreApellido) {
+		this.nombreApellido = nombreApellido;
+	}
+
 	/**
 	 * @return the propiedad
 	 */
@@ -129,19 +147,19 @@ public class Propietario {
 	}
 
 	
-	/**
-	 * @return the apellido
-	 */
-	public String getApellido() {
-		return apellido;
-	}
-	
-	/**
-	 * @param apellido the apellido to set
-	 */
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
+//	/**
+//	 * @return the apellido
+//	 */
+//	public String getApellido() {
+//		return apellido;
+//	}
+//	
+//	/**
+//	 * @param apellido the apellido to set
+//	 */
+//	public void setApellido(String apellido) {
+//		this.apellido = apellido;
+//	}
 	
 	/**
 	 * @return the documento
@@ -268,11 +286,13 @@ public class Propietario {
 
 	@Override
 	public String toString() {
-		return "Propietario [id=" + id + ", propiedad=" + propiedad + ", nombre=" + nombre + ", apellido=" + apellido
+		return "Propietario [id=" + id + ", propiedad=" + propiedad + ", nombreApellido=" + nombreApellido
 				+ ", documento=" + documento + ", telefono=" + telefono + ", email=" + email + ", categoria="
 				+ categoria + ", vehiculo=" + vehiculo + ", dominio=" + dominio + ", estatus=" + estatus
 				+ ", registros=" + registros + ", trabajador=" + trabajador + "]";
 	}
+
+	
 
 	
 	

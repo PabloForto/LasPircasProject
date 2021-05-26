@@ -44,15 +44,15 @@ public class PropietarioService implements IPropietarioService {
 //		return propietarioRepo.findByLoteAndNumeroOrderByLoteAsc(lotePropietario, numeroPropietario);
 //
 //	}
-
-	public List<Propietario> buscarPorNombre(String nombrePropietario) {
-		return propietarioRepo.findByNombre(nombrePropietario);
-	}
-
-	public List<Propietario> buscarPorApellido(String apellidoPropietario) {
-		return propietarioRepo.findByApellido(apellidoPropietario);
-
-	}
+//
+//	public List<Propietario> buscarPorNombre(String nombrePropietario) {
+//		return propietarioRepo.findByNombre(nombrePropietario);
+//	}
+//
+//	public List<Propietario> buscarPorApellido(String apellidoPropietario) {
+//		return propietarioRepo.findByApellido(apellidoPropietario);
+//
+//	}
 
 	public List<Propietario> buscarPorDominio(String dominioPropietario) {
 		return propietarioRepo.findByDominio(dominioPropietario);
@@ -67,9 +67,9 @@ public class PropietarioService implements IPropietarioService {
 //
 //	}
 
-	public List<Propietario> buscarPorNombrePorApellido(String nombrePropietario, String apellidoPropietario) {
-		return propietarioRepo.findByNombreAndApellidoOrderByIdAsc(nombrePropietario, apellidoPropietario);
-	}
+//	public List<Propietario> buscarPorNombrePorApellido(String nombrePropietario, String apellidoPropietario) {
+//		return propietarioRepo.findByNombreAndApellidoOrderByIdAsc(nombrePropietario, apellidoPropietario);
+//	}
 
 	public void eliminar(Integer idPropietario) {
 		propietarioRepo.deleteById(idPropietario);
@@ -78,6 +78,11 @@ public class PropietarioService implements IPropietarioService {
 
 	public List<Propietario> listarDisponibles() {
 		return propietarioRepo.findByRegistrosIsNullOrRegistrosEgresoIsNotNullAndRegistrosIngresoIsNotNull();
+	}
+
+	@Override
+	public List<Propietario> buscarPorNombreApellido(String nombreApellido) {
+		return propietarioRepo.findByNombreApellido(nombreApellido);
 	}
 
 }

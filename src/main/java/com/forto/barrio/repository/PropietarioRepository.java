@@ -16,9 +16,11 @@ public interface PropietarioRepository extends JpaRepository<Propietario, Intege
 
 //	List<Propietario> findByNumero(Integer numero);
 
-	List<Propietario> findByNombre(String nombre);
-
-	List<Propietario> findByApellido(String apellido);
+//	List<Propietario> findByNombre(String nombre);
+//
+//	List<Propietario> findByApellido(String apellido);
+	
+	List<Propietario> findByNombreApellido(String  nombreApellido);
 
 	List<Propietario> findByDocumento(Integer documento);
 
@@ -30,7 +32,7 @@ public interface PropietarioRepository extends JpaRepository<Propietario, Intege
 
 //	List<Propietario> findByLoteAndNumeroOrderByLoteAsc(String lote, int numero);
 
-	List<Propietario> findByNombreAndApellidoOrderByIdAsc(String nombre, String apellido);
+//	List<Propietario> findByNombreAndApellidoOrderByIdAsc(String nombre, String apellido);
 
 //	List<Propietario> findByLoteAndNumeroAndNombreAndApellidoOrderByLoteAsc(String lote, int numero, String nombre,
 //			String apellido);
